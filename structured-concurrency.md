@@ -1,5 +1,5 @@
-Structure Concurrency
-=====================
+Structured Concurrency
+======================
 
 [Wikipedia](https://en.wikipedia.org/wiki/Structured_concurrency)
 
