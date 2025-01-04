@@ -33,3 +33,11 @@ P2300 (senders/receivers)
 [stdexec](https://github.com/NVIDIA/stdexec)
 
 https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2024/p2300r10.html
+
+
+Thread Pool
+===========
+
+[Wikipedia](https://en.wikipedia.org/wiki/Thread_pool)
+
+["A C++17 Thread Pool for High-Performance Scientific Computing"](https://github.com/bshoshany/thread-pool) by Barak Shoshany
