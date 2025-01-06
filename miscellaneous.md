@@ -3,6 +3,8 @@ What's wrong with iostream
 
 [What's wrong with iostream?](https://www.reddit.com/r/cpp_questions/comments/17r9qve/whats_wrong_with_iostream)
 
+[iostream 的用途与局限](https://www.cnblogs.com/Solstice/archive/2011/07/17/2108715.html)
+
 **alfps**:
 **{fmt}** library for formatting,
 and **C FILE\* i/o** for the actual i/o except keyboard input.
@@ -79,4 +81,17 @@ Smart Pointer
 
 [Moving a unique pointer - undefined behavior on cppreference?](https://stackoverflow.com/questions/75966130/moving-a-unique-pointer-undefined-behavior-on-cppreference)
 
+
+Position-independent code
+-------------------------
+
+[Wikipedia](https://en.wikipedia.org/wiki/Position-independent_code)
+
+[Why not always use fpic (Position Independent Code)?](https://stackoverflow.com/questions/31332299/why-not-always-use-fpic-position-independent-code)
+
+
+Semantic Versioning
+--------------------
+
+https://semver.org
 
