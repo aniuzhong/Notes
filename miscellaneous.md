@@ -1,3 +1,82 @@
+CppCoreGuidelines
+-----------------
+
+C.20: If you can avoid defining default operations, do
+
+C.21: If you define or =delete any copy, move, or destructor function, define or =delete them all
+
+C.67: A polymorphic class should suppress public copy/move
+
+F.21: To return multiple “out” values, prefer returning a struct
+
+``` C++
+bool f1(const std::string& in, std::string& out1, std::string& out2)
+{
+    if (in.size() == 0)
+        return false;
+    out1 = "hello";
+    out2 = "world";
+    return true;
+}
+
+std::tuple<bool, std::string, std::string> f2(const std::string& in)
+{
+    if (in.size() == 0)
+        return std::make_tuple(false, "", "");
+    return std::make_tuple(true, "hello", "world");
+}
+
+struct Out
+{
+    std::string out1{""};
+    std::string out2{""};
+};
+
+std::pair<bool, Out> f3(const std::string& in)
+{
+    Out o;
+    if (in.size() == 0)
+        return { false, o };
+    o.out1 = "hello";
+    o.out2 = "world";
+    return { true, o };
+}
+
+std::optional<Out> f4(const std::string& in)
+{
+    Out o;
+    if (in.size() == 0)
+        return std::nullopt;
+    o.out1 = "hello";
+    o.out2 = "world";
+    return { o };
+}
+```
+
+
+Libraries
+---------
+
+[tanakh/cmdline: A Command Line Parser](https://github.com/tanakh/cmdline)
+
+[jarro2783/cxxopts: Lightweight C++ command line option parser](https://github.com/jarro2783/cxxopts)
+
+[uni-algo: Unicode Algorithms Implementation for C/C++](https://github.com/uni-algo/uni-algo)
+
+[nemtrif/utfcpp: UTF-8 with C++ in a Portable Way](https://github.com/nemtrif/utfcpp)
+
+[gabime/spdlog: ast C++ logging library](https://github.com/gabime/spdlog)
+
+[renatoGarcia/icecream-cpp: 🍦Never use cout/printf to debug again](https://github.com/renatoGarcia/icecream-cpp.git)
+
+[smasherprog/screen_capture_lite: cross platform screen/window capturing library](https://github.com/smasherprog/screen_capture_lite)
+``` bash
+sudo apt install libxfixes-dev
+```
+
+[serge-rgb/TinyJPEG: Single header lib for JPEG encoding. Public domain. C99. stb style.](https://github.com/serge-rgb/TinyJPEG)
+
+
 What's wrong with iostream
 --------------------------
 
@@ -60,6 +139,15 @@ std::thread
 [C++ - compilation fails on calling overloaded function in std::thread](https://stackoverflow.com/questions/44049407/c-compilation-fails-on-calling-overloaded-function-in-stdthread)
 
 
+std::condition_variable::wait
+-----------------------------
+
+[CppReference](https://en.cppreference.com/w/cpp/language/adl)
+
+Atomically calls lock.unlock() and blocks on *this. The thread will be unblocked when notify_all() or notify_one() is executed. It may also be unblocked spuriously.
+ When unblocked, calls lock.lock() (possibly blocking on the lock), then returns.
+
+
 Convert Vector of Characters to String in C++
 ---------------------------------------------
 
@@ -94,4 +182,71 @@ Semantic Versioning
 --------------------
 
 https://semver.org
+
+
+Passing function parameters
+---------------------------
+
+[Passing function parameters correctly in C++ :: Tutorial on different references](https://www.youtube.com/watch?v=w1Cw3KFPh1A)
+
+[Take Parameters Properly](https://www.reddit.com/r/programmingcirclejerk/comments/zmvxem/take_parameters_properly)
+
+``` C++
+void f1(std::invocable<int, double, std::string> auto&& x)
+{
+    x(42, 3.14, "abc");
+}
+
+void f2(void(* x)(int, double, std::string))
+{
+    x(42, 3.14, "abc");
+}
+
+void f3(std::move_only_function<void(int, double, std::string)>&& x)
+{
+    x(42, 3.14, "abc");
+}
+
+void f4(std::function<void(int, double, std::string)> x)
+{
+    x(42, 3.14, "abc");
+}
+```
+
+The rule of three/five/zero
+---------------------------
+
+[CppReference](https://en.cppreference.com/w/cpp/language/rule_of_three)
+
+
+String
+------
+
+[String literal - CppReference](https://en.cppreference.com/w/cpp/language/string_literal)
+
+[Localization Library - CppReference](https://en.cppreference.com/w/cpp/locale)
+
+
+Definitions and ODR (One Definition Rule)
+-----------------------------------------
+
+[CppReference](https://en.cppreference.com/w/cpp/language/definition)
+
+
+Argument-dependent lookup
+-------------------------
+
+[CppReference](https://en.cppreference.com/w/cpp/language/adl)
+
+
+std::vector
+-----------
+
+Correctly using reserve() can prevent unnecessary reallocations.
+
+
+Allocator
+---------
+
+["Allocators: the Good Parts", at CppCon2017](https://github.com/phalpern/CppCon2017Code)
 
