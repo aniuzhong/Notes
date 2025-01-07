@@ -39,7 +39,7 @@ int main()
     for(int i = 0; i < N; ++i)
     {
         char buf[L];
-        snprintf(buf, L, "%d", i); // only one array will be declare,
+        snprintf(buf, L, "%d", i); // only one array will be declared,
                                    // should use: auto buf = std::to_string(i);
         thrds[i] = std::thread(f, buf);
     }
