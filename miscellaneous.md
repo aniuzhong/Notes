@@ -226,6 +226,9 @@ String
 
 [Localization Library - CppReference](https://en.cppreference.com/w/cpp/locale)
 
+[Generic Text Mappings](https://learn.microsoft.com/en-us/cpp/c-runtime-library/using-generic-text-mappings)
+
+[Routine Mappings](https://learn.microsoft.com/en-us/cpp/c-runtime-library/routine-mappings)
 
 Definitions and ODR (One Definition Rule)
 -----------------------------------------
@@ -250,3 +253,37 @@ Allocator
 
 ["Allocators: the Good Parts", at CppCon2017](https://github.com/phalpern/CppCon2017Code)
 
+
+std::atomic
+-----------
+
+[When do I really need to use atomic<bool> instead of bool?](https://stackoverflow.com/questions/16320838/when-do-i-really-need-to-use-atomicbool-instead-of-bool)
+
+**Pete Becker**:
+
+There are three separate issues that "atomic" types in C++11 address:
+
+1. tearing: a read or write involves multiple bus cycles, and a thread switch occurs in the middle of the operation; this can produce incorrect values.
+2. cache coherence: a write from one thread updates its processor's cache, but does not update global memory; a read from a different thread reads global memory, and doesn't see the updated value in the other processor's cache.
+3. compiler optimization: the compiler shuffles the order of reads and writes under the assumption that the values are not accessed from another thread, resulting in chaos.
+
+Using std::atomic<bool> ensures that all three of these issues are managed correctly. Not using std::atomic<bool> leaves you guessing, with, at best, non-portable code.
+
+[Why is integer assignment on a naturally aligned variable atomic on x86?](https://stackoverflow.com/questions/36624881/why-is-integer-assignment-on-a-naturally-aligned-variable-atomic-on-x86)
+
+
+Dependency Manager
+------------------
+
+[VcPkg](https://vcpkg.io/en)
+``` bash
+cmake -B ./build -S . -DCMAKE_TOOLCHAIN_FILE="C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+```
+
+CPM.cmake
+``` bash
+mkdir -p cmake
+wget -O cmake/CPM.cmake https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/get_cpm.cmake
+```
+
+Conan
