@@ -3,12 +3,27 @@ Window 11
 
 1. Settings -> Personalisation -> Taskbar -> Taskbar behaviours -> Taskbar Alignment -> Left
 
-2. Settings -> Personalisation -> Taskbar -> Taskbar items -> Search -> Hide (Use Win+s)
+2. Settings -> Personalisation -> Taskbar -> Taskbar items -> Search -> Hide
 
 3. Settings -> Personalisation -> Taskbar -> Taskbar items -> Task view -> Off
 
 4. Settings -> Personalisation -> Taskbar -> Taskbar items -> 
 Widgets -> Off
+
+5. Settings -> Privacy & security -> Search permissions -> More settings -> 
+Show search highlights -> Off
+
+6. Explorer -> View -> Group By -> (None)
+
+
+Shortcuts
+---------
+
+[How to Switch Desktops Windows 11 Shortcut: A Step-by-Step Guide](https://www.solveyourtech.com/how-to-switch-desktops-windows-11-shortcut-a-step-by-step-guide)
+
+Ctrl + Windows + Left/Right Arrow
+
+Search: Windows + s
 
 
 Applications
