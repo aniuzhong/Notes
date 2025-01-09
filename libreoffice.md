@@ -11,6 +11,26 @@ Build on Windows
 Build on macOS
 ----------------
 
+Version of /usr/bin/make < 4
+
+```bash
+brew install make
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+```
+
+```bash
+./autogen.sh --without-java --without-junit --enable-python=no --disable-odk --enable-dbgutil
+```
+
+pkg-config in Homebrew is conflict with /usr/local/pkg-config. See [this]( https://ask.libreoffice.org/t/need-help-for-first-build-macos-high-sierra/29957).
+
+```bash
+# before the build
+mv -v /opt/homebrew/bin/pkg-config{,.restore-after-build}
+# after the build
+mv -v /opt/homebrew/bin/pkg-config{.restore-after-build,}
+```
+
 
 UNO API
 -------
