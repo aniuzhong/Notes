@@ -54,3 +54,9 @@ target_link_libraries(foo
   ${OO_SDK_LIBRARIES})
 target_link_libraries(foo PRIVATE screencapturelite)
 ```
+
+
+FindBoost
+---------
+
+https://stackoverflow.com/questions/79146083/finding-boost-without-cmake-find-module-cmp0167
