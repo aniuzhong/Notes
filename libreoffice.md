@@ -1,15 +1,32 @@
 Build on Linux
---------------
+==============
 
 https://wiki.documentfoundation.org/Development/BuildingOnLinux
 
 
 Build on Windows
-----------------
+================
+
+https://wiki.documentfoundation.org/Development/BuildingOnWindows
+
+https://wiki.documentfoundation.org/Development/lode
+
+
+Build dependencies (libreoffice-24-2-5)
+---------------------------------------
+
+**Install Visual Studio (2019)**
+
+- C++ core desktop features
+- MSVC v142 - VS 2019 C++ x64/x86 build tools (Latest)
+- Windows 10 SDK (10.0.19041.0)
+- Windows 11 SDK (10.0.22000.0)
+- C++ ATL for lastest v142 build tools (x86 & x64)
+- C++ Clang Compiler for Windows (12.0.0)
 
 
 Build on macOS
-----------------
+==============
 
 Version of /usr/bin/make < 4
 
@@ -33,7 +50,7 @@ mv -v /opt/homebrew/bin/pkg-config{.restore-after-build,}
 
 
 UNO API
--------
+=======
 
 Block/Non-block
 
@@ -46,19 +63,19 @@ Block/Non-block
 
 
 Module AVMedia
---------------
+==============
 
 
 Module Slideshow
-----------------
+================
 
 
 Repair Package
---------------
+==============
 
 
 Convert to PDF (soffice)
-------------------------
+========================
 
 ``` bash
 soffice --headless --invisible --convert-to pdf /tmp/broken.pptx --outdir /tmp/out
