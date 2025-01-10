@@ -162,6 +162,37 @@ std::span, std::string_view
 [What are string_views and why should we use them?](https://www.sandordargo.com/blog/2022/07/13/why_to_use_string_views)
 
 
+std::variant
+------------
+
+Typical use of [std::visit](https://en.cppreference.com/w/cpp/utility/variant/visit2)
+
+```C++
+using var_t = std::variant<int, long, double, std::string>;
+ 
+template<class... Ts>
+struct overloaded : Ts... { using Ts::operator()...; };
+ 
+int main()
+{
+    std::vector<var_t> vec = {10, 15l, 1.5, "hello"};
+    for (auto& v: vec)
+    {
+        std::visit(
+            // Aggregate classes with base classes (since C++17)
+            // By inheriting from these lambdas,
+            // the overloaded struct can use their operator() functions.
+            overloaded{ [](auto arg) { std::cout << arg << ' '; },
+                        [](double arg) { std::cout << std::fixed << arg << ' '; },
+                        [](const std::string& arg) { std::cout << std::quoted(arg) << ' '; } },
+            v);
+    }
+}
+```
+
+[Aggregate initialization](https://en.cppreference.com/w/cpp/language/aggregate_initialization)
+
+
 Smart Pointer
 -------------
 
