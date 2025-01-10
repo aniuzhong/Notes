@@ -53,6 +53,21 @@ std::optional<Out> f4(const std::string& in)
 }
 ```
 
+Constructors
+------------
+
+[cppreference - Constructors and member initializer lists](https://en.cppreference.com/w/cpp/language/constructor)
+
+[StackOverflow - How to handle failure in constructor in C++?](https://stackoverflow.com/questions/4989807/how-to-handle-failure-in-constructor-in-c)
+
+
+Exception safety
+----------------
+
+[Wikipedia](https://en.wikipedia.org/wiki/Exception_safety)
+
+[StackOverflow - Do you (really) write exception safe code?](https://stackoverflow.com/questions/1853243/do-you-really-write-exception-safe-code)
+
 
 Libraries
 ---------
