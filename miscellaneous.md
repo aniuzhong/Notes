@@ -53,12 +53,22 @@ std::optional<Out> f4(const std::string& in)
 }
 ```
 
-Constructors
-------------
+Classes
+-------
 
 [cppreference - Constructors and member initializer lists](https://en.cppreference.com/w/cpp/language/constructor)
 
 [StackOverflow - How to handle failure in constructor in C++?](https://stackoverflow.com/questions/4989807/how-to-handle-failure-in-constructor-in-c)
+
+
+Initialization
+--------------
+
+[cppreference - Initialization](https://en.cppreference.com/w/cpp/language/initialization)
+
+[cppreference - List-initialization](https://en.cppreference.com/w/cpp/language/list_initialization)
+
+[cppreference - Aggregate initialization](https://en.cppreference.com/w/cpp/language/aggregate_initialization)
 
 
 Exception safety
