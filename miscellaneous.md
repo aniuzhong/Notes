@@ -211,10 +211,15 @@ int main()
 Smart Pointer
 -------------
 
-[Thread Safety of std::shared_ptr](https://www.zhihu.com/question/56836057/answer/150768793)
+[知乎 - c++ 11 的 shared_ptr 多线程安全](https://www.zhihu.com/question/56836057/answer/150768793)
 
-[Moving a unique pointer - undefined behavior on cppreference?](https://stackoverflow.com/questions/75966130/moving-a-unique-pointer-undefined-behavior-on-cppreference)
+[StackOverflow - Moving a unique pointer - undefined behavior on cppreference?](https://stackoverflow.com/questions/75966130/moving-a-unique-pointer-undefined-behavior-on-cppreference)
 
+[StackOverflow - Does C++11 unique_ptr and shared_ptr able to convert to each other's type?](https://stackoverflow.com/questions/37884728/does-c11-unique-ptr-and-shared-ptr-able-to-convert-to-each-others-type)
+
+```
+This is a key part of why std::unique_ptr is so well suited as a factory function return type. Factory functions can’t know whether callers will want to use exclusive ownership semantics for the object they return or whether shared ownership (i.e., std::shared_ptr) would be more appropriate. By returning a std::unique_ptr, factories provide callers with the most efficient smart pointer, but they don’t hinder callers from replacing it with its more flexible sibling.
+```
 
 Position-independent code
 -------------------------
