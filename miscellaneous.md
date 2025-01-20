@@ -95,12 +95,18 @@ Libraries
 [renatoGarcia/icecream-cpp: 🍦Never use cout/printf to debug again](https://github.com/renatoGarcia/icecream-cpp.git)
 
 [smasherprog/screen_capture_lite: cross platform screen/window capturing library](https://github.com/smasherprog/screen_capture_lite)
-``` bash
+
+``` Sh
 sudo apt install libxfixes-dev
 ```
 
-[serge-rgb/TinyJPEG: Single header lib for JPEG encoding. Public domain. C99. stb style.](https://github.com/serge-rgb/TinyJPEG)
+[serge-rgb/TinyJPEG: Single header lib for JPEG encoding](https://github.com/serge-rgb/TinyJPEG)
 
+[libsigc++: A typesafe callback system for standard C++](https://github.com/libsigcplusplus/libsigcplusplus)
+
+``` Sh
+sudo apt install libsigc++-3.0-dev
+```
 
 What's wrong with iostream
 --------------------------
