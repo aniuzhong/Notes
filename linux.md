@@ -42,29 +42,67 @@ loginctl list-sessions
 Utilities
 ---------
 
-### System Information
+### CLI
 
 - neofetch
 - inxi (full featured system information script)
 - ncdu (ncurses disk usage viewer)
 - gparted (GNOME partition editor)
-
-### Shell
-
-- zsh
-
-### Manual
-
 - tldr
-
-### Multimedia
-
 - mediainfo
+
+### GUI
+
 - obs-studio
 - audacity
 
+
+Modern Linux Graphics Stack 
+---------------------------
+
+[Wikipedia - Direct Rendering Infrastructure](https://en.wikipedia.org/wiki/Direct_Rendering_Infrastructure)
+
+[Wikipedia - Direct Rendering Manager](https://en.wikipedia.org/wiki/Direct_Rendering_Manager)
+
+[知乎 - GPU渲染之路：从图形引擎到内核驱动](https://zhuanlan.zhihu.com/p/649971173)
+
+[CSDN - DRM（Direct Rendering Manager）学习简介](https://blog.csdn.net/hexiaolong2009/article/details/83720940)
+
+
+
 Linux on the Desktop
 ====================
+
+
+Desktop Environment
+-------------------
+
+Install KDE Plasma on Ubuntu 24.04
+
+``` Sh
+sudo apt update
+# sudo apt install kde-standard
+sudo apt install kde-full
+```
+
+Switch display manager
+
+``` Sh
+sudo dpkg-reconfigure gdm3
+```
+
+[Wikipedia - X display manager](https://en.wikipedia.org/wiki/X_display_manager)
+
+[Wikipedia - GNOME Display Manager](https://en.wikipedia.org/wiki/GNOME_Display_Manager)
+
+[Wikipedia - Simple Desktop Display Manager](https://en.wikipedia.org/wiki/Simple_Desktop_Display_Manager)
+
+
+[StackExchange - Is there a way to get list of windows on KDE Wayland?](https://unix.stackexchange.com/questions/706477/is-there-a-way-to-get-list-of-windows-on-kde-wayland)
+
+``` Sh
+wmctrl -l # list X11 windows on XWayland
+```
 
 https://en.wikipedia.org/wiki/Linux_range_of_use#Desktop
 
@@ -77,6 +115,18 @@ https://itsfoss.com/gnome-screen-recorder
 https://itsfoss.com/screen-record-obs-wayland
 
 https://pointieststick.com/2023/09/17/so-lets-talk-about-this-wayland-thing
+
+
+X11
+---
+
+### wmctrl
+
+``` Sh
+wmctrl -n $(($(wmctrl -d | wc -l) + 1)) # Create new workspace
+wmctrl -s $(($(wmctrl -d | wc -l) - 1)) # Switch to the new workspace
+wmctrl -d # Verify the current workspace
+```
 
 
 D-Bus
@@ -177,3 +227,17 @@ dpkg -l | grep gstreamer
 gst-inspect-1.0 pipewire
 gst-inspect-1.0 pipewiresrc
 ```
+
+
+APUE
+----
+
+Standard IO: portable, bufferd
+
+Process terminates normally,
+- return from main()
+- call exit(), _exit(), _Exit()
+
+Process terminates normally,
+- abort()
+- signal
