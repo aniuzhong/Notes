@@ -72,6 +72,82 @@ Dependency Walker
 [RAMMap](https://learn.microsoft.com/en-us/sysinternals/downloads/rammap)
 
 
+System Locale
+-------------
+
+Settings -> Time & language -> Language -> Related settings -> Administrative -> Administrative language settings
+
+Or in Explorer
+
+Control Panel\Clock and Region
+
+Region -> Administrative -> Language for non-Unicode programs -> Change system locale
+
+Beta: Use Unicode UTF-8 worldwide language support
+
+When Windows and earlier operating systems like MS-DOS were developed, UTF-8 and Unicode were not widely adopted or standardized.
+Code pages like CP 850 were already established for handling text in Western European languages.
+
+| System locale | Default code page |
+| --- | --- |
+| English (United Kingdom) | CP850 |
+| English (United States)  | CP437 | 
+
+``` Powershell
+systeminfo.exe | Select-String "Locale"
+```
+
+``` C++
+#ifdef _WIN32
+// #pragma execution_character_set("utf-8")
+#include <Windows.h>
+#endif
+
+#include <iostream>
+
+void wprint(std::wstring message)
+{
+    /*  wprint prints a string that can have any emoji or Unicode characters.
+        When creating a wstring, put an L in front of it.
+        For example, `wprint(L"Hi! 🔥");` prints `Hi! 🔥`.
+        Your file must be saved in the UTF-8 (_with_ BOM/signature) encoding.
+    */
+#ifdef _WIN32
+    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD n_written;
+    WriteConsoleW(handle, message.c_str(), (DWORD)message.size(), &n_written, NULL);
+#else
+    std::wcout << message;
+#endif
+}
+
+void print(const char8_t* message)
+{
+    UINT output_cp_old = ::GetConsoleOutputCP();
+    UINT input_cp_old = ::GetConsoleCP();
+
+    ::SetConsoleOutputCP(CP_UTF8);
+    ::SetConsoleCP(CP_UTF8);
+
+    std::cout << reinterpret_cast<const char*>(message);
+
+    ::SetConsoleOutputCP(output_cp_old );
+    ::SetConsoleCP(input_cp_old );
+}
+
+int main()
+{
+    std::cout << "Current Output Code Page: " << ::GetConsoleOutputCP() << '\n'
+              << "Current Input Code Page: " << ::GetConsoleCP() << '\n';
+
+    wprint(L"안녕하세요，世界，🌏！\n");
+    print(u8"안녕하세요，世界，🌏！\n");
+
+    std::cout << "Current Output Code Page: " << ::GetConsoleOutputCP() << '\n'
+              << "Current Input Code Page: " << ::GetConsoleCP() << '\n';
+}
+```
+
 Office Tool Plus
 ----------------
 
